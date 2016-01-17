@@ -1,0 +1,38 @@
+<h2>Login bij Super.io</h2>
+
+<form class="signup" (ngSubmit)="onSubmit()" #signupForm="ngForm">
+  <div class="form-group">
+    <label for="firstName">Voornaam</label>
+    <input [(ngModel)]="signupData.firstName" required type="text" ngControl="firstName" #firstName="ngForm"
+           id="firstName" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Achternaam</label>
+    <input [(ngModel)]="signupData.lastName" required type="text" ngControl="lastName" #lastName="ngForm"
+           id="lastName" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mailadres</label>
+    <input [(ngModel)]="signupData.email" required type="email" ngControl="email" #email="ngForm" id="email"
+           class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Wachtwoord</label>
+    <input [(ngModel)]="signupData.password" required min="6" type="password" ngControl="password" #password="ngForm"
+           id="password" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="confirmPassword">Wachtwoord nogmaals</label>
+    <input [(ngModel)]="signupData.confirmPassword" required min="6" type="password" ngControl="confirmPassword"
+           #confirmPassword="ngForm"
+           id="confirmPassword" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!signupForm.form.valid">Registreren</button>
+
+  <p class="login-call">Al geregistreerd? <a>Log dan nu in!</a></p>
+</form>
