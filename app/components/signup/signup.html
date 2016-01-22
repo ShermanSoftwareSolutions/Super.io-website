@@ -1,4 +1,4 @@
-<h2>Login bij Super.io</h2>
+<h2>Registreren bij Super.io</h2>
 
 <form class="signup" (ngSubmit)="onSubmit()" #signupForm="ngForm">
   <div class="form-group">
@@ -34,5 +34,5 @@
 
   <button type="submit" class="btn btn-primary" [disabled]="!signupForm.form.valid">Registreren</button>
 
-  <p class="login-call">Al geregistreerd? <a>Log dan nu in!</a></p>
+  <p class="login-call">Al geregistreerd? <a [routerLink]="['/Login']">Log dan nu in!</a></p>
 </form>

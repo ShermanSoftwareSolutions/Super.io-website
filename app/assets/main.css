@@ -21,3 +21,8 @@ nav {
 .ng-invalid.ng-touched {
   border-left: 5px solid #a94442; /* red */
 }
+
+.login-call {
+  margin-top: 20px;
+  font-size: 14px;
+}

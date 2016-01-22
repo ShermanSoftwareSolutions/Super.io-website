@@ -1,11 +1,12 @@
 import {Component} from 'angular2/core';
 import {UserService} from '../../services/user';
+import {RouterLink} from 'angular2/router';
 
 @Component({
   selector: 'signup',
+  directives: [RouterLink],
   providers: [UserService],
-  templateUrl: './components/signup/signup.html',
-  styleUrls: ['./components/signup/signup.css']
+  templateUrl: './components/signup/signup.html'
 })
 
 export class SignupComponent {
