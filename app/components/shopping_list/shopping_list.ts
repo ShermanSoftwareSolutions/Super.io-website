@@ -14,7 +14,7 @@ export class ShoppingListComponent {
     this.ShoppingListIndex = this._shoppingListService.index();
   }
 
-  public ShoppingListIndex: Array<ShoppingList> = [];
+  public ShoppingListIndex;
 
 }
 
