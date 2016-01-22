@@ -1,14 +1,15 @@
 import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Response} from 'angular2/http';
+import {AuthHttp} from '../components/angular2-jwt/angular2-jwt';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ShoppingListService {
-  constructor(private http:Http) {}
+  constructor(private authHttp:AuthHttp) {}
 
   private endpoint:string = 'http://localhost:1337/shoppinglist';
 
   index() {
-    return this.http.get(this.endpoint).map((resp:Response) => resp.json())
+    return this.authHttp.get(this.endpoint).map((resp:Response) => resp.json());
   }
 }
