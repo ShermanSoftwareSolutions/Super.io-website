@@ -13,5 +13,5 @@
 
   <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
 
-  <p class="signup-call">Nog geen gebruiker? <a>Registreer dan nu!</a></p>
+  <p class="login-call">Nog geen gebruiker? <a [routerLink]="['/Signup']">Registreer dan nu!</a></p>
 </form>

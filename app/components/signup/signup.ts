@@ -1,15 +1,16 @@
 import {Component} from 'angular2/core';
 import {UserService} from '../../services/user';
+import {RouterLink, Router} from 'angular2/router';
 
 @Component({
   selector: 'signup',
+  directives: [RouterLink],
   providers: [UserService],
-  templateUrl: './components/signup/signup.html',
-  styleUrls: ['./components/signup/signup.css']
+  templateUrl: './components/signup/signup.html'
 })
 
 export class SignupComponent {
-  constructor(private _userService: UserService) {}
+  constructor(private _userService: UserService, private _router: Router) {}
 
   public signupData: SignupData = {
     lastName: '',
@@ -28,7 +29,9 @@ export class SignupComponent {
           this.signupData.password = '';
           this.signupData.confirmPassword = '';
         },
-        () => console.log('Redirect to homepage') // Angular router redirect to homepage (logged in)
+        () => {
+          this._router.navigate(['Home']); // Angular router redirect to homepage (logged in)
+        }
     );
   }
 }
