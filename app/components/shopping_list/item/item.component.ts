@@ -20,6 +20,6 @@ export class ShoppingListItemComponent {
   }
 
   deleteItem(shoppingListItem) {
-    this._shoppingListService.delete(shoppingListItem.id);
+    this._shoppingListService.deleteItem(shoppingListItem.id).subscribe();
   }
 }

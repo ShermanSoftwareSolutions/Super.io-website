@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 export class ProductService {
   constructor(private _authHttp:AuthHttp) {}
 
-  private endpoint:String = 'http://localhost:1337/product';
+  private endpoint:string = 'http://localhost:1337/product';
 
   index() {
     this._authHttp.get(this.endpoint)
