@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, EventEmitter, Output} from 'angular2/core';
 import {ShoppingListService, ShoppingList} from '../../../services/shopping_list.service';
 import {RouterLink, Router} from 'angular2/router';
 
@@ -11,6 +11,8 @@ import {RouterLink, Router} from 'angular2/router';
 })
 
 export class ShoppingListItemComponent {
+  @Output('removed') removed = new EventEmitter();
+
   constructor(private _router: Router, private _shoppingListService: ShoppingListService ) {}
 
   public shoppingListItem: ShoppingList;
@@ -21,5 +23,6 @@ export class ShoppingListItemComponent {
 
   deleteItem(shoppingListItem) {
     this._shoppingListService.deleteItem(shoppingListItem.id).subscribe();
+    this.removed.emit(shoppingListItem.id);
   }
 }

@@ -2,7 +2,10 @@
 
 <div class="panel panel-info " name="shoppinglists">
   <div class="panel-body">
-      <shopping-list-item *ngFor="#shoppingListItem of shoppingListIndex" [shoppingListItem]="shoppingListItem" class="panel panel-default">
-      </shopping-list-item>
+      <shopping-list-item *ngFor="#shoppingListItem of shoppingListIndex"
+                          [shoppingListItem]="shoppingListItem"
+                          (removed)="removeItem($event)"
+                          class="panel panel-default"></shopping-list-item>
+      <button (click)="newShoppingList()">New!</button>
   </div>
 </div>
