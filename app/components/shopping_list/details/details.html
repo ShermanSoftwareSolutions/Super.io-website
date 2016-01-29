@@ -1,0 +1,11 @@
+<h2>{{shoppingList.title}}</h2>
+
+<div class="panel panel-info " name="shoppinglists">
+  <div class="panel-body">
+    <shopping-list-product *ngFor="#shoppingListItem of shoppingListIndex"
+                        [shoppingListItem]="shoppingListItem"
+                        (removed)="removeItem($event)"
+                        class="panel panel-default"></shopping-list-product>
+    <button (click)="newShoppingList()">New!</button>
+  </div>
+</div>

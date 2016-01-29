@@ -21,5 +21,4 @@ export class ShoppingListDetailsComponent implements OnInit {
       .subscribe((shoppingList) => this.shoppinglist = shoppingList);
   }
 
-
 }
