@@ -2,6 +2,8 @@ import {Component, OnChanges, OnInit} from 'angular2/core';
 import {ShoppingListItemComponent} from './item/item.component';
 import {ShoppingListService, ShoppingList} from '../../services/shopping_list.service';
 import {NgFor} from 'angular2/common';
+import {Router} from 'angular2/router';
+import {JwtHelper} from '../angular2-jwt/angular2-jwt';
 
 @Component({
   selector: 'shopping-list',
@@ -12,9 +14,11 @@ import {NgFor} from 'angular2/common';
 })
 
 export class ShoppingListComponent implements OnChanges, OnInit {
-  constructor(private _shoppingListService: ShoppingListService) {}
+  constructor(private _shoppingListService:ShoppingListService, private _router:Router) {}
 
   public shoppingListIndex: Array<ShoppingList>;
+
+  private jwtHelper:JwtHelper = new JwtHelper();
 
   ngOnInit() {
     this.updateShoppingLists();
@@ -33,7 +37,18 @@ export class ShoppingListComponent implements OnChanges, OnInit {
   }
 
   newShoppingList() {
-    let shoppingList:ShoppingList = {id:null, userId:2, title:'iets', lines:null};
+    let token = localStorage.getItem('jwt');
+    let userId:number = this.jwtHelper.decodeToken(token).sub.id;
+    let shoppingList:ShoppingList = {
+      id: null,
+      userId: userId,
+      title: 'Titel',
+      lines: null,
+      createdAdd: null,
+      updatedAdd: null
+    };
+
     this._shoppingListService.create(shoppingList).subscribe(this.shoppingListIndex.push(shoppingList));
+    this._router.navigate( [ 'ShoppingListDetails', { id: shoppingList.id } ] );
   }
 }

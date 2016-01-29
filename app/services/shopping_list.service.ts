@@ -83,14 +83,31 @@ export class ShoppingListService {
 }
 
 export interface ShoppingList {
-  id: number;
-  userId: number;
-  title: string;
-  lines: Array<ShoppingListLine>;
+  id:number;
+  userId:number;
+  title:string;
+  lines:Array<ShoppingListLine>;
+  createdAdd:string;
+  updatedAdd:string;
 }
 
 export interface ShoppingListLine {
-  shoppinglistId: number;
-  productId: number;
-  amount: number;
+  id:number;
+  shoppinglistId:number;
+  productId:number;
+  amount:number;
+  product:Array<Product>;
+  createdAdd:string;
+  updatedAdd:string;
 }
+
+export interface Product {
+  title:string;
+  price:number;
+  image:string;
+  salesTax:string;
+  id:number;
+  createdAdd:string;
+  updatedAdd:string;
+}
+
