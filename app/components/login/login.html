@@ -1,0 +1,23 @@
+<h2>Login bij Super.io</h2>
+
+<form class="login" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="email">E-mailadres</label>
+    <input [(ngModel)]="loginData.email" required type="email" ngControl="email" #email="ngForm" id="email"
+           class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Wachtwoord</label>
+    <input [(ngModel)]="loginData.password" required min="6" type="password" ngControl="password" #password="ngForm"
+           id="password" class="form-control">
+  </div>
+
+  <div *ngIf="error">
+    <p class="bg-danger padding-border">{{error}}</p>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
+
+  <p class="login-call">Nog geen gebruiker? <a [routerLink]="['/Signup']">Registreer dan nu!</a></p>
+</form>

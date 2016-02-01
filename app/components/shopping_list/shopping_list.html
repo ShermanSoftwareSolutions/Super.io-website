@@ -1,0 +1,11 @@
+<h2>Boodschappenlijstjes</h2>
+
+<shopping-list-item *ngFor="#shoppingListItem of shoppingListIndex"
+                    [shoppingListItem]="shoppingListItem"
+                    (removed)="removeItem($event)"></shopping-list-item>
+
+<form class="form-inline">
+  <input type="text" class="form-control" placeholder="Naam lijstje" [(ngModel)]="listName" />
+
+  <button (click)="newShoppingList()" class="btn btn-primary">Aanmaken!</button>
+</form>

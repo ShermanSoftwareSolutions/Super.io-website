@@ -1,13 +1,60 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 p.loading-text {
-    font-size: 20px;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 20px;
 }
 
 nav {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid.ng-touched {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.login-call {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.padding-border {
+  padding: 15px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.panel-item {
+  padding: 0px 10px 8px 10px !important;
+}
+
+.line-icon {
+  margin-top: 15px;
+  font-size: 20px;
+}
+.logo-img {
+  height: 50px;
+  width: 50px;
+}
+
+.navbar-brand {
+  padding: 0px 15px !important;
+}
+
+.padding-bottom {
+  padding-bottom: 50px;
 }
