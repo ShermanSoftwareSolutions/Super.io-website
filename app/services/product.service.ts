@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private _authHttp:AuthHttp) {
   }
 
-  private endpoint:string = 'http://localhost:1337/product';
+  private endpoint:string = 'http://128.199.32.43:1337/product';
 
   /**
    *

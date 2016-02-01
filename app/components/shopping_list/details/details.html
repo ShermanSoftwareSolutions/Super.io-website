@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="form" class="form-inline">
+<div class="form" class="form-inline padding-bottom">
   <select [ngModel]="stringify(selectedProduct)" (ngModelChange)="updateSelectedValue($event)" class="form-control">
     <option *ngFor="#product of products" [value]="stringify(product)">{{product.title}} {{product.price | currency:'EUR':true:'1.2-2'}}
     </option>

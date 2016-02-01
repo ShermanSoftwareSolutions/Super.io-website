@@ -39,7 +39,7 @@ export class SignupComponent {
       },
       () => {
         this._router.navigate(['ShoppingList']); // Angular router redirect to homepage (logged in)
-      })
+      });
   }
 }
 

@@ -54,3 +54,7 @@ nav {
 .navbar-brand {
   padding: 0px 15px !important;
 }
+
+.padding-bottom {
+  padding-bottom: 50px;
+}

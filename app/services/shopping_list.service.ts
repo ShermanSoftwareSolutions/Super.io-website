@@ -13,7 +13,7 @@ export class ShoppingListService {
   constructor(private _authHttp:AuthHttp) {
   }
 
-  private endpoint:string = 'http://localhost:1337/shoppinglist';
+  private endpoint:string = 'http://128.199.32.43:1337/shoppinglist';
 
   /**
    * method for requesting a listing of all shoppinglsits of the current user

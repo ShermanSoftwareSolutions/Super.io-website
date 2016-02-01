@@ -1,6 +1,8 @@
-<div class="panel panel-primary clickable" (click)="viewDetails(shoppingListItem)">
+<div class="panel panel-primary">
   <div class="panel-body">
-    <span class="pull-right glyphicon glyphicon-remove " (click)="deleteItem(shoppingListItem)"></span>
-    {{shoppingListItem.title}}
+    <span class="pull-right glyphicon glyphicon-remove" (click)="deleteItem(shoppingListItem)"></span>
+    <div (click)="viewDetails(shoppingListItem)" class="clickable">
+      {{shoppingListItem.title}}
+    </div>
   </div>
 </div>
