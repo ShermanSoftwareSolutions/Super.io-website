@@ -18,6 +18,7 @@ export class ShoppingListItemComponent {
   public shoppingListItem: ShoppingList;
 
   viewDetails(shoppingListItem) {
+    console.log(JSON.stringify(shoppingListItem.id));
     this._router.navigate( [ 'ShoppingListDetails', { id: shoppingListItem.id } ] );
   }
 

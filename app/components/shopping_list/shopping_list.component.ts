@@ -39,16 +39,12 @@ export class ShoppingListComponent implements OnChanges, OnInit {
   newShoppingList() {
     let token = localStorage.getItem('jwt');
     let userId:number = this.jwtHelper.decodeToken(token).sub.id;
-    let shoppingList:ShoppingList = {
-      id: null,
+    let shoppingList:ShoppingList = <ShoppingList>{
       userId: userId,
-      title: 'Titel',
-      lines: null,
-      createdAdd: null,
-      updatedAdd: null
+      title: 'Titel'
     };
-
-    this._shoppingListService.create(shoppingList).subscribe(this.shoppingListIndex.push(shoppingList));
-    this._router.navigate( [ 'ShoppingListDetails', { id: shoppingList.id } ] );
+    this._shoppingListService.create(shoppingList).subscribe(
+      result => this._router.navigate( [ 'ShoppingListDetails', { id: result.id } ] )
+    );
   }
 }

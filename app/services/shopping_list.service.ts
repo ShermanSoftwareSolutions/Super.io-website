@@ -1,6 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Response} from 'angular2/http';
 import {AuthHttp} from '../components/angular2-jwt/angular2-jwt';
+import {Product} from './product.service';
 import 'rxjs/add/operator/map';
 
 /**
@@ -32,7 +33,8 @@ export class ShoppingListService {
    * @returns {Observable<R> containing the added shoppinglist line}
    */
   addLine(shoppingListId:number, productId:number, amount:number) {
-    return this._authHttp.put(this.endpoint + '/' + shoppingListId + '/' + productId, JSON.stringify(amount))
+    console.log(JSON.stringify({amount:amount.toString()}));
+    return this._authHttp.put(this.endpoint + '/' + shoppingListId + '/' + productId, JSON.stringify({amount:amount.toString()}) )
       .map((resp:Response) => resp.json());
   }
 
@@ -45,7 +47,7 @@ export class ShoppingListService {
    * @returns {Observable<R> containing the modified shoppinglist line}
    */
   changeAmount(shoppingListId:number, productId:number, amount:number) {
-    return this._authHttp.put(this.endpoint + '/amount/' + shoppingListId + '/' + productId, JSON.stringify(amount))
+    return this._authHttp.put(this.endpoint + '/amount/' + shoppingListId + '/' + productId, JSON.stringify({amount:amount.toString()}))
       .map((resp:Response) => resp.json());
   }
 
@@ -96,17 +98,7 @@ export interface ShoppingListLine {
   shoppinglistId:number;
   productId:number;
   amount:number;
-  product:Array<Product>;
-  createdAdd:string;
-  updatedAdd:string;
-}
-
-export interface Product {
-  title:string;
-  price:number;
-  image:string;
-  salesTax:string;
-  id:number;
+  product:Product;
   createdAdd:string;
   updatedAdd:string;
 }
