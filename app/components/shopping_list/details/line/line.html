@@ -1,0 +1,19 @@
+<div class="panel panel-info">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-2"(click)="viewDetails(shoppingListItem)">
+        {{shoppingListLine.product.title}}
+      </div>
+      <div class="col-2"(click)="viewDetails(shoppingListItem)">
+        prijs: {{shoppingListLine.product.price | currency:'Eur':treu:'1.2-2'}}
+      </div>
+      <div class="col-2"(click)="viewDetails(shoppingListItem)">
+        aantal: {{shoppingListLine.amount}}
+      </div>
+
+      <span *ngIf="shoppingListLine.amount > 1" class="pull-right glyphicon glyphicon-minus " (click)="reduceAmount()" ></span>
+      <span *ngIf="shoppingListLine.amount === 1" class="pull-right glyphicon glyphicon-remove " (click)="removeItem()" ></span>
+      <span class="pull-right glyphicon glyphicon-plus " (click)="increaseAmount()" ></span>
+    </div>
+  </div>
+</div>

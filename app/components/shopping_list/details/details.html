@@ -1,0 +1,23 @@
+<h2>{{shoppingList.title}}</h2>
+
+<div class="panel panel-info " name="shoppinglists">
+  <div class="panel-body">
+    <shopping-list-product *ngFor="#shoppingListLine of lines"
+                        [shoppingListLine]="shoppingListLine"
+                        (removed)="removeLine($event)"
+                        class="panel panel-default"></shopping-list-product>
+    <div class="row">
+      <div class="col-md-6">
+        <span class="text-center"> Totaal: {{total() | currency:'EUR':true:'1.2-2'}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <select [ngModel]="stringify(selectedProduct)" (ngModelChange)="updateSelectedValue($event)">
+          <option *ngFor="#product of products" [value]="stringify(product)">{{product.title}} {{product.price | currency:'EUR':true:'1.2-2'}}</option>
+        </select>
+      </div>
+      <button (click)="newShoppingListLine()">Add</button>
+    </div>
+  </div>
+</div>

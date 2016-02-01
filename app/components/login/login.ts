@@ -1,15 +1,16 @@
 import {Component} from 'angular2/core';
 import {UserService} from '../../services/user';
+import {Router, RouterLink} from 'angular2/router';
 
 @Component({
   selector: 'login',
+  directives: [RouterLink],
   providers: [UserService],
-  templateUrl: './components/login/login.html',
-  styleUrls: ['./components/login/login.css']
+  templateUrl: './components/login/login.html'
 })
 
 export class LoginComponent {
-  constructor(private _userService: UserService) {}
+  constructor(private _userService: UserService, private _router: Router) {}
 
   public loginData: LoginData = {
     email: '',
@@ -19,12 +20,16 @@ export class LoginComponent {
   onSubmit() {
     this._userService
       .login(this.loginData).subscribe(
-        data => console.log(data), // Log the token to the angular2-jwt library
+        data => {
+          localStorage.setItem('jwt', data.token);
+        },
         err => {
           // Show toast message
           this.loginData.password = '';
         },
-        () => console.log('Redirect to homepage') // Angular router redirect to homepage (logged in)
+        () => {
+          this._router.navigate(['Home']); // Angular router redirect to homepage (logged in)
+        }
     );
   }
 }

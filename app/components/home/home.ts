@@ -4,6 +4,5 @@ import {Component} from 'angular2/core';
   selector: 'home',
   templateUrl: './components/home/home.html'
 })
-export class HomeComponent {
 
-}
+export class HomeComponent {}
