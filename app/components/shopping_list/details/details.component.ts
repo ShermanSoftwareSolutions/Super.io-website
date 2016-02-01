@@ -9,7 +9,6 @@ import {ShoppingListLineComponent} from './line/line.component';
   providers: [ShoppingListService, ProductService],
   selector: 'shopping-list-details',
   templateUrl: './components/shopping_list/details/details.html',
-  styleUrls: ['./components/shopping_list/details/details.css'],
   directives: [FORM_DIRECTIVES, ShoppingListLineComponent],
   inputs: ['id']
 })

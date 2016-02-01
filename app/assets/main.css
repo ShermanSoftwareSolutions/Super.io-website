@@ -26,3 +26,23 @@ nav {
   margin-top: 20px;
   font-size: 14px;
 }
+
+.padding-border {
+  padding: 15px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.panel-item {
+  padding: 0px 10px 8px 10px !important;
+}
+
+.line-icon {
+  margin-top: 15px;
+  font-size: 20px;
+}

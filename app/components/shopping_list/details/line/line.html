@@ -1,19 +1,20 @@
-<div class="panel panel-info">
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-2"(click)="viewDetails(shoppingListItem)">
-        {{shoppingListLine.product.title}}
-      </div>
-      <div class="col-2"(click)="viewDetails(shoppingListItem)">
-        prijs: {{shoppingListLine.product.price | currency:'Eur':treu:'1.2-2'}}
-      </div>
-      <div class="col-2"(click)="viewDetails(shoppingListItem)">
-        aantal: {{shoppingListLine.amount}}
-      </div>
+<div class="panel panel-primary">
+  <div class="panel-body panel-item">
+    <div class="pull-right line-icon">
+      <span *ngIf="shoppingListLine.amount > 1" class="clickable glyphicon glyphicon-minus"
+              (click)="reduceAmount()"></span>
+      <span *ngIf="shoppingListLine.amount === 1" class="clickable glyphicon glyphicon-trash"
+              (click)="removeItem()"></span>
 
-      <span *ngIf="shoppingListLine.amount > 1" class="pull-right glyphicon glyphicon-minus " (click)="reduceAmount()" ></span>
-      <span *ngIf="shoppingListLine.amount === 1" class="pull-right glyphicon glyphicon-remove " (click)="removeItem()" ></span>
-      <span class="pull-right glyphicon glyphicon-plus " (click)="increaseAmount()" ></span>
+      &nbsp;&nbsp;
+      <span class="clickable glyphicon glyphicon-plus" (click)="increaseAmount()"></span>
     </div>
+
+    <div>
+      <h4>{{shoppingListLine.product.title}}</h4>
+      Prijs: {{shoppingListLine.product.price | currency:'EUR':true:'1.2-2'}}<br/>
+      Aantal: {{shoppingListLine.amount}}
+    </div>
+
   </div>
 </div>

@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class ProductService {
-  constructor(private _authHttp:AuthHttp) {}
+  constructor(private _authHttp:AuthHttp) {
+  }
 
   private endpoint:string = 'http://localhost:1337/product';
 
