@@ -10,9 +10,10 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class ShoppingListService {
-  constructor(private _authHttp:AuthHttp) {}
+  constructor(private _authHttp:AuthHttp) {
+  }
 
-  private endpoint:string = 'http://localhost:1337/shoppinglist';
+  private endpoint:string = 'http://128.199.32.43:1337/shoppinglist';
 
   /**
    * method for requesting a listing of all shoppinglsits of the current user
@@ -33,8 +34,8 @@ export class ShoppingListService {
    * @returns {Observable<R> containing the added shoppinglist line}
    */
   addLine(shoppingListId:number, productId:number, amount:number) {
-    console.log(JSON.stringify({amount:amount.toString()}));
-    return this._authHttp.put(this.endpoint + '/' + shoppingListId + '/' + productId, JSON.stringify({amount:amount.toString()}) )
+    console.log(JSON.stringify({amount: amount.toString()}));
+    return this._authHttp.put(this.endpoint + '/' + shoppingListId + '/' + productId, JSON.stringify({amount: amount.toString()}))
       .map((resp:Response) => resp.json());
   }
 
@@ -47,7 +48,7 @@ export class ShoppingListService {
    * @returns {Observable<R> containing the modified shoppinglist line}
    */
   changeAmount(shoppingListId:number, productId:number, amount:number) {
-    return this._authHttp.put(this.endpoint + '/amount/' + shoppingListId + '/' + productId, JSON.stringify({amount:amount.toString()}))
+    return this._authHttp.put(this.endpoint + '/amount/' + shoppingListId + '/' + productId, JSON.stringify({amount: amount.toString()}))
       .map((resp:Response) => resp.json());
   }
 

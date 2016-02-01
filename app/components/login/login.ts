@@ -10,26 +10,32 @@ import {Router, RouterLink} from 'angular2/router';
 })
 
 export class LoginComponent {
-  constructor(private _userService: UserService, private _router: Router) {}
+  constructor(private _userService:UserService, private _router:Router) {
+  }
 
-  public loginData: LoginData = {
+  public loginData:LoginData = {
     email: '',
     password: ''
   };
 
+  public error:string = undefined;
+
   onSubmit() {
     this._userService
       .login(this.loginData).subscribe(
-        data => {
-          localStorage.setItem('jwt', data.token);
-        },
-        err => {
-          // Show toast message
-          this.loginData.password = '';
-        },
-        () => {
-          this._router.navigate(['Home']); // Angular router redirect to homepage (logged in)
-        }
+      data => {
+        this.error = undefined;
+        localStorage.setItem('jwt', data.token);
+      },
+      err => {
+        // Show error message
+        this.error = (err._body).replace(/['"]+/g, '');
+
+        this.loginData.password = '';
+      },
+      () => {
+        this._router.navigate(['ShoppingList']); // Angular router redirect to homepage (logged in)
+      }
     );
   }
 }

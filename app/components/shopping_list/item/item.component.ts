@@ -6,20 +6,20 @@ import {RouterLink, Router} from 'angular2/router';
   selector: 'shopping-list-item',
   directives: [RouterLink],
   templateUrl: './components/shopping_list/item/item.html',
-  styleUrls: ['./components/shopping_list/item/item.css'],
   inputs: ['shoppingListItem']
 })
 
 export class ShoppingListItemComponent {
   @Output('removed') removed = new EventEmitter();
 
-  constructor(private _router: Router, private _shoppingListService: ShoppingListService ) {}
+  constructor(private _router:Router, private _shoppingListService:ShoppingListService) {
+  }
 
-  public shoppingListItem: ShoppingList;
+  public shoppingListItem:ShoppingList;
 
   viewDetails(shoppingListItem) {
     console.log(JSON.stringify(shoppingListItem.id));
-    this._router.navigate( [ 'ShoppingListDetails', { id: shoppingListItem.id } ] );
+    this._router.navigate(['ShoppingListDetails', {id: shoppingListItem.id}]);
   }
 
   deleteItem(shoppingListItem) {

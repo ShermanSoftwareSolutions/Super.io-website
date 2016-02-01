@@ -10,9 +10,10 @@ import {RouterLink, Router} from 'angular2/router';
 })
 
 export class SignupComponent {
-  constructor(private _userService: UserService, private _router: Router) {}
+  constructor(private _userService:UserService, private _router:Router) {
+  }
 
-  public signupData: SignupData = {
+  public signupData:SignupData = {
     lastName: '',
     firstName: '',
     email: '',
@@ -20,19 +21,25 @@ export class SignupComponent {
     confirmPassword: ''
   };
 
+  public error:string = undefined;
+
   onSubmit() {
     this._userService
       .signup(this.signupData).subscribe(
-        data => console.log(data), // Log the token to the angular2-jwt library
-        err => {
-          // Show toast message
-          this.signupData.password = '';
-          this.signupData.confirmPassword = '';
-        },
-        () => {
-          this._router.navigate(['Home']); // Angular router redirect to homepage (logged in)
-        }
-    );
+      data => {
+        this.error = undefined;
+        localStorage.setItem('jwt', data.token);
+      },
+      err => {
+        // Show error message
+        this.error = (err._body).replace(/['"]+/g, '');
+
+        this.signupData.password = '';
+        this.signupData.confirmPassword = '';
+      },
+      () => {
+        this._router.navigate(['ShoppingList']); // Angular router redirect to homepage (logged in)
+      });
   }
 }
 

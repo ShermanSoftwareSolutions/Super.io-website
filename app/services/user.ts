@@ -4,9 +4,10 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
-  constructor(private http:Http) {}
+  constructor(private http:Http) {
+  }
 
-  private endpoint:string = 'http://localhost:1337/user';
+  private endpoint:string = 'http://128.199.32.43:1337/user';
 
   login(user) {
     return this.http.post(this.endpoint + '/login', JSON.stringify(user))

@@ -32,6 +32,10 @@
            id="confirmPassword" class="form-control">
   </div>
 
+  <div *ngIf="error">
+    <p class="bg-danger padding-border">{{error}}</p>
+  </div>
+
   <button type="submit" class="btn btn-primary" [disabled]="!signupForm.form.valid">Registreren</button>
 
   <p class="login-call">Al geregistreerd? <a [routerLink]="['/Login']">Log dan nu in!</a></p>
